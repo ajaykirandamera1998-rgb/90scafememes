@@ -33,7 +33,7 @@
     <div class="flex items-center gap-3">
       <img src="logo.png" class="h-10 object-contain">
       <div>
-        <h1 class="font-bold text-xl tracking-widest" style="font-family:\'Cormorant Garamond\'; color:#3E2314">BESTA</h1>
+        <h1 class="font-bold text-xl tracking-widest" style="font-family:\'Cormorant Garamond\', serif; color:#3E2314">BESTA</h1>
         <p class="text-[10px] tracking-[0.2em] text-[#8B5A00] -mt-1">THE INDIAN KITCHEN</p>
       </div>
     </div>
@@ -67,12 +67,12 @@
       <div class="besta-bg text-white py-5 px-4 text-center">
         <img src="logo.png" class="h-10 mx-auto mb-2 brightness-0 invert">
         <p class="text-[10px] tracking-[0.35em] opacity-80">HAPPY BATHUKAMMA</p>
-        <h2 class="text-2xl font-bold tracking-wide" style="font-family:\'Cormorant Garamond\'">BESTA</h2>
+        <h2 class="text-2xl font-bold tracking-wide" style="font-family:\'Cormorant Garamond\', serif">BESTA</h2>
         <p class="text-[9px] tracking-[0.2em] opacity-60">THE INDIAN KITCHEN</p>
       </div>
       <div id="cardStackWrap" class="h-[380px] bg-gradient-to-b from-[#FFFCF2] to-[#FFE9B8] relative flex flex-col items-center justify-end pb-8 p-4"></div>
       <div class="bg-white p-5 text-center">
-        <h3 id="cardName" class="font-bold text-lg" style="font-family:\'Cormorant Garamond\'; color:#3E2314"></h3>
+        <h3 id="cardName" class="font-bold text-lg" style="font-family:\'Cormorant Garamond\', serif; color:#3E2314"></h3>
         <p class="text-xs text-gray-600 mt-1">May your life be as colourful & joyful<br>as the Bathukamma</p>
         <div class="mt-4 pt-3 border-t border-dashed flex justify-between">
           <p class="text-[9px] text-gray-400 text-left">Celebrating Telangana\'s<br>Flower Festival with you</p>
@@ -85,7 +85,6 @@
   </div>
 </div>
 <script>
-// MATCHES YOUR CURRENT GITHUB FILES EXACTLY
 const flowers = [
  { name:"Banthi", img:"banthi.png" },
  { name:"Chamanthi", img:"chamanthi.png" },
@@ -94,13 +93,13 @@ const flowers = [
  { name:"Nandi", img:"nandi.png" },
  { name:"Surya", img:"surya.png" },
  { name:"Tangedu", img:"tangedu.png" },
- { name:"Katla", img:"katla.png" },
+ { name:"Katla", img:"katia.png" },
  { name:"Billa", img:"billa.png" },
- { name:"Teku", img:"teku.png" },
+ { name:"Teku", img:"teku.png" }
 ];
 const palette = document.getElementById(\'palette\');
-flowers.forEach((f,i)=>{
-  palette.innerHTML += `<button onclick="addRing(${i})" class="bg-[#FFFBF0] rounded-2xl p-2 border border-[#F3E6C8] hover:border-[#D4A017] flex flex-col items-center"><img src="${f.img}" class="w-11 h-11 object-contain" onerror="this.src=\'https://via.placeholder.com/60?text=?\'"><span class="text-[10px] font-semibold mt-1" style="color:#3E2314">${f.name}</span></button>`
+flowers.forEach((f,i) => {
+  palette.innerHTML += \'<button onclick="addRing(\'+i+\')" class="bg-[#FFFBF0] rounded-2xl p-2 border border-[#F3E6C8] hover:border-[#D4A017] flex flex-col items-center"><img src="\'+f.img+\'" class="w-11 h-11 object-contain"><span class="text-[10px] font-semibold mt-1" style="color:#3E2314">\'+f.name+\'</span></button>\';
 });
 let layerCount = 0;
 const widths = [282, 252, 222, 192, 162, 128, 92, 58];
@@ -112,8 +111,9 @@ function addRing(i){
  const h = w * 0.36;
  const ring = document.createElement(\'div\');
  ring.className = "bathukamma-ring";
- ring.style.width = w+"px"; ring.style.height = h+"px";
- ring.style.backgroundImage = `url(${flowers[i].img})`;
+ ring.style.width = w + "px";
+ ring.style.height = h + "px";
+ ring.style.backgroundImage = \'url(\'+flowers[i].img+\')\';
  ring.style.zIndex = 20 - layerCount;
  ring.onclick = function(){ this.remove(); reStack(); }
  stack.appendChild(ring);
@@ -131,13 +131,13 @@ function clearAll(){ document.getElementById(\'stack\').innerHTML=""; layerCount
 function generate(){
  if(layerCount < 4) return alert("Add at least 4 layers for beautiful cone");
  document.getElementById(\'cardName\').innerText = document.getElementById(\'custName\').value || "A Loved Guest";
- document.getElementById(\'cardStackWrap\').innerHTML = document.getElementById(\'stack\').innerHTML + `<div class="plate w-[300px] h-[36px] rounded-[50%] absolute bottom-3"></div>`;
+ document.getElementById(\'cardStackWrap\').innerHTML = document.getElementById(\'stack\').innerHTML + \'<div class="plate w-[300px] h-[36px] rounded-[50%] absolute bottom-3"></div>\';
  document.getElementById(\'modal\').classList.remove(\'hidden\'); document.getElementById(\'modal\').classList.add(\'flex\');
 }
 function closeM(){ document.getElementById(\'modal\').classList.add(\'hidden\'); document.getElementById(\'modal\').classList.remove(\'flex\'); }
 function downloadCard(){
  html2canvas(document.getElementById(\'captureCard\'), {scale:3, useCORS:true}).then(c=>{
-   let a=document.createElement(\'a\'); a.download=`BESTA-Bathukamma.png`; a.href=c.toDataURL(); a.click();
+   let a=document.createElement(\'a\'); a.download=\'BESTA-Bathukamma.png\'; a.href=c.toDataURL(); a.click();
  });
 }
 </script>
